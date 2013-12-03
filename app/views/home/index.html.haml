@@ -2,11 +2,12 @@
   .row
     .large-12.columns
       .text-center
-        %h1 #hashtag
+        %h1 #hashtag application
         %p.lead
           Meet someone? Include the
           %span.label #hashtag
           in your tweets and revisit that conversation
-        = link_to '#login_with_twitter_path', :class => 'button login large' do
+        %p (This desciption sounds like a dating app)
+        = link_to '/dashboard#login_with_twitter_path', :class => 'button login large' do
           %i.fi-social-twitter
           %span Login with Twitter
