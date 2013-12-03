@@ -1,6 +1,8 @@
 Codemashme::Application.routes.draw do
   root 'home#index'
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

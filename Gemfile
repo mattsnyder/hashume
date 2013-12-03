@@ -11,8 +11,11 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'therubyracer', platforms: :ruby
 
+gem 'omniauth-twitter', '~> 1.0.1'
+gem 'configurethis', '~> 1.0.5'
+
 gem 'compass-rails'
-gem 'zurb-foundation'
+gem 'zurb-foundation', '~> 4.3.2'
 
 group :test, :development do
   gem 'coderay', '~> 1.1.0'
