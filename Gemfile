@@ -12,6 +12,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 
 group :test, :development do
+  gem 'coderay', '~> 1.1.0'
   gem 'rspec-rails', '~> 2.14.0'
   gem 'rspec-given', '~> 3.1.1'
   gem 'powder'
