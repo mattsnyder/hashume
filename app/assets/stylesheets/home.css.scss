@@ -1,103 +1,24 @@
-@import "mixins";
+#introduction {
+	background: white;
+	padding: 50px 0;
 
-/* Home */
-html body.home {
-    background: url(/assets/bg.jpg) no-repeat center top fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-color: black; 
+	h1 {font-size: 5.5em}
+	p {margin-bottom: 50px}
+  p.lead {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
 
-    font-family: tahoma, sans-serif;
-
-    h2 {
-		margin-bottom: 5px;
-		font-family: 'Roboto Condensed', sans-serif;
-		color: white;
-	}
-}
-
-#home {
-	margin-top: 100px;
-	h1.logo {
-		font-size: 1px;
-		text-indent: -2000px;
-	}
-	
-	h2,p.lead {color: white;margin: 0} 
-
-	p.lead {
-		margin-bottom: 20px;
-		font-size: 16px;
-
-		span {
-			$foo: 3px;
-			color: white;
-			background: $red;
-			padding: 5px;
-			-webkit-border-radius: $foo;
-			-moz-border-radius: $foo;
-			border-radius: $foo;
-		}
-	}
-
-
-}
-
-.button.login {
-	span,label {
-		transition: all 1s;
-		-moz-transition: all 1s; /* Firefox 4 */
-		-webkit-transition: all 1s; /* Safari and Chrome */
-		-o-transition: all 1s; /* Opera */
-	}
-}
-
-.button.login {
-	background: #40d4e1;
-	text-shadow:none;
-	border: none;
-	font-weight: normal;
-	position: relative;
-	padding: 15px 25px;
-
-	ul.inline-list {
-		margin: 0;
-		li {
-			margin: 0;
-			&:last-child{
-				margin-left:20px;
-			}
-		}
-	}
-
-	span {
-		display: block;
-		height: 30px;
-		width: 30px;
-		background: url(/assets/twitter-icon.png) no-repeat 0 0;
-		background-size: 100%;
-		margin-top: 7px;
-		opacity: 0.8;
-	}
-
-	label {
-		color: white;
-		margin-top: 4px;
-	}
-
-	span,label {
-		transition: all 1s;
-		-moz-transition: all 1s; /* Firefox 4 */
-		-webkit-transition: all 1s; /* Safari and Chrome */
-		-o-transition: all 1s; /* Opera */
-	}
-
-	&:hover {
-		background: $red;
-		span, label {
-			opacity: 1.0;
-		}
-	}
+  .button.login {
+    @include shadow;
+    border-bottom: 4px solid $blue;
+    span {
+      position: relative;
+      top: -6px;
+    }
+    i {
+      font-size: 2em;
+      margin-right: 10px;
+    }
+  }
 }

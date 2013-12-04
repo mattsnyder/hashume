@@ -1,25 +1,13 @@
-.row
-  .right
-    .follow-me.left
-      %a.twitter-follow-button{"data-lang" => "en", "data-show-count" => "false", href: "https://twitter.com/andreortiz"} Follow @andreortiz
-    .tweet-now.left
-      %a.twitter-share-button{"data-count" => "horizontal", "data-url" => "http://sxh.me", "data-via" => "andreortiz", href: "https://twitter.com/share"} Tweet
-%section#home
+#introduction
   .row
-    .large-8.large-centered.small-12.columns
-      .row
-        .large-3.columns.small-6
-          %h1.logo
-            %img{src: "/assets/logo.png"}/
-        .large-9.columns
-          %h2 SOUTHSIDE HASH
-          %p.lead
-            Your collection of tweets tagged with
-            %span #sxh
-            so you can follow up with people you meet at SXSW 2013.
-          = link_to '/auth/twitter', :class => 'button login large' do
-            %ul.inline-list
-              %li
-                %span
-              %li
-                %label Login with Twitter
+    .large-12.columns
+      .text-center
+        %h1 #hashtag application
+        %p.lead
+          Meet someone? Include the
+          %span.label #hashtag
+          in your tweets and revisit that conversation
+        %p (This desciption sounds like a dating app)
+        = link_to '/dashboard#login_with_twitter_path', :class => 'button login large' do
+          %i.fi-social-twitter
+          %span Login with Twitter
