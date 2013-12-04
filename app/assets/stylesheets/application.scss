@@ -9,8 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require foundation_and_overrides
- *= require dashboard
- *= require home
- *= require hook
  */
+@import 'compass';
+@import 'foundation-icons';
+@import 'foundation_and_overrides';
+@import 'settings';
+@import 'home';
+@import 'dashboard';
