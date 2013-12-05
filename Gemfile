@@ -13,6 +13,7 @@ gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 
+gem 'twitter', '~> 5.1.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'configurethis', '~> 1.0.5'
 
