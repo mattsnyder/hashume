@@ -24,26 +24,28 @@
     .large-12.columns
       %h2 Tweets you've twatted
 
-      - ['1 day ago', '5 days ago', '2 weeks ago'].each do |time_span|
+      - ['before now'].each do |time_span|
         .row.date-group
           .large-2.columns
             %date= time_span
           .large-10.columns
-            - 3.times do
+            - tweets.each do |twit|
               .tweet.panel
                 .row
                   .large-9.columns
                     %p.bio.lead
-                      Foundation is an easy to use, powerful, and flexible framework for building prototypes and production code on any kind of device. Start here, build everywhere.
-                      %span.label= "##{hashtag}"
+                      = nickname + ":"
+                      = twit.text
+                      - twit.hashtags.each do |tag|
+                        %span.label= link_to "#" + tag.text, "http://www.twitter.com/search?q=%23#{tag.text}"
 
                     .mentions
                       %ul.inline-list
-                        - 3.times do
+                        - twit.user_mentions.each do |mention|
                           %li
-                            = link_to "#twitter_user_profile" do
-                              .user.avatar{title:'Joe User', class:'has-tip tip-top', data:{tooltip:''}}
-                                %img.th{src:'http://placeimg.com/50/50/any'}
+                            = link_to "http://www.twitter.com/#{mention.screen_name}" do
+                              .user.avatar{title: mention.name, class:'has-tip tip-top', data:{tooltip:''}}
+                                %img.th{src: "http://placeimg.com/50/50/any"}
                   .large-3.columns
                     .map
                       %img.th{src:"http://maps.googleapis.com/maps/api/staticmap?center=Austin,TX&zoom=13&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C30.266109942151,-97.745935320854"}
