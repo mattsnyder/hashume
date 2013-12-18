@@ -10,6 +10,10 @@ gem 'foundation-rails', '~> 5.0.2'
 gem 'compass-rails', github: "Compass/compass-rails", branch: "rails4-hack"
 gem 'turbolinks'
 
+gem 'mongo', '1.7.0'
+gem 'bson_ext', '1.7.0'
+gem 'curator', '~> 0.10.0'
+
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 

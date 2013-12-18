@@ -16,4 +16,7 @@
 
 .DS_Store
 
+# Files containing sensitive stuff
 config/twitter_config.yml
+config/riak.yml
+config/mongo.yml

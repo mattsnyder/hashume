@@ -9,15 +9,15 @@
     .large-12.columns
       %h2 People you've met
       %ul.large-block-grid-3
-        - 6.times do
+        - mentions.each do |mentioned|
           %li
             .info.text-center
-              = link_to "#twitter_user_profile" do
+              = link_to "http://twitter.com/##{mentioned['screen_name']}" do
                 .avatar
-                  %img.th{src:'http://placeimg.com/100/100/any'}
-                %h4 Joe User
-              %p.bio
-                Foundation is an easy to use, powerful, and flexible framework for building prototypes and production code on any kind of device. Start here, build everywhere.
+                  %img.th{src: mentioned['profile_image_normal'] }
+                %h4= mentioned['name']
+              %p.bio= mentioned['description']
+
 
 #tweets
   .row
@@ -34,18 +34,18 @@
                 .row
                   .large-9.columns
                     %p.bio.lead
-                      = nickname + ":"
-                      = twit.text
-                      - twit.hashtags.each do |tag|
-                        %span.label= link_to "#" + tag.text, "http://www.twitter.com/search?q=%23#{tag.text}"
+                      = screen_name + ":"
+                      = twit[:text]
+                      - twit[:hashtags].each do |tag|
+                        %span.label= link_to "#" + tag, "http://www.twitter.com/search?q=%23#{tag}"
 
                     .mentions
                       %ul.inline-list
-                        - twit.user_mentions.each do |mention|
+                        - twit[:user_mentions].each do |mention|
                           %li
-                            = link_to "http://www.twitter.com/#{mention.screen_name}" do
-                              .user.avatar{title: mention.name, class:'has-tip tip-top', data:{tooltip:''}}
-                                %img.th{src: "http://placeimg.com/50/50/any"}
+                            = link_to "http://www.twitter.com/#{mention}" do
+                              .user.avatar{title: mention, class:'has-tip tip-top', data:{tooltip:''}}
+                                / %img.th{src: mentions.detect{|m| m['screen_name'] == mention}['profile_image_normal'] }
                   .large-3.columns
                     .map
                       %img.th{src:"http://maps.googleapis.com/maps/api/staticmap?center=Austin,TX&zoom=13&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C30.266109942151,-97.745935320854"}

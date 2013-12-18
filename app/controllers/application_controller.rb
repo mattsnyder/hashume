@@ -10,12 +10,28 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-  def current_user=(value)
-    session[:current_user] = value
+  def current_user=(tweeter)
+    session[:current_user] = tweeter
   end
 
   def current_user
     session[:current_user]
+  end
+
+  def twitter
+    Rails.logger.debug "Using the twitter client"
+    @client ||= Twitter::REST::Client.new do |config|
+      config.consumer_key        = TwitterConfig.key
+      config.consumer_secret     = TwitterConfig.secret
+      config.access_token        = self.current_user.oauth_token
+      config.access_token_secret = self.current_user.oauth_secret
+    end
+  end
+
+  def debug(message)
+    Rails.logger.debug "="*20
+    Rails.logger.debug message
+    Rails.logger.debug "="*20
   end
 
   # Nicely identify what is getting pushed to views
