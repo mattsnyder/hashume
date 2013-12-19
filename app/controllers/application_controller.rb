@@ -18,16 +18,6 @@ class ApplicationController < ActionController::Base
     session[:current_user]
   end
 
-  def twitter
-    Rails.logger.debug "Using the twitter client"
-    @client ||= Twitter::REST::Client.new do |config|
-      config.consumer_key        = TwitterConfig.key
-      config.consumer_secret     = TwitterConfig.secret
-      config.access_token        = self.current_user.oauth_token
-      config.access_token_secret = self.current_user.oauth_secret
-    end
-  end
-
   def debug(message)
     Rails.logger.debug "="*20
     Rails.logger.debug message
