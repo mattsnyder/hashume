@@ -34,7 +34,6 @@
                 .row
                   .large-9.columns
                     %p.bio.lead
-                      = screen_name + ":"
                       = twit[:text]
                       - twit[:hashtags].each do |tag|
                         %span.label= link_to "#" + tag, "http://www.twitter.com/search?q=%23#{tag}"

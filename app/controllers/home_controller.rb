@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   expose :tweets, :screen_name, :mentions
-  # before_action :update_tweets, only: :dashboard
+  before_action :update_tweets, only: :dashboard
 
   helper_method :profile_pic_url
 
@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def dashboard
     self.screen_name = current_user.screen_name
-    self.tweets = TweetByHashumeRepository.find_by_hashume(hashume.to_s).map(&:tweet)  # twitter.user_timeline(self.screen_name)
+    self.tweets = TweetByHashumeRepository.find_by_hashume(hashume.to_s).map(&:tweet).sort{|x,y| y[:created_at] <=> x[:created_at]}
     self.mentions = MentionByHashumeRepository.find_by_hashume(hashume.to_s).map(&:mention)
   end
 
@@ -31,6 +31,7 @@ class HomeController < ApplicationController
                         text: t.text,
                         hashtags: t.hashtags.map(&:text),
                         user_mentions: t.user_mentions.map(&:name),
+                        created_at: t.created_at,
                         uri: t.uri.to_s
                         )
       debug %(New tweet #{tweet.inspect})
