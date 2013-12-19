@@ -1,4 +1,4 @@
-Codemashme::Application.routes.draw do
+HashumeApp::Application.routes.draw do
   root 'home#index'
   get '/auth/:provider/callback', to: 'sessions#create'
 
