@@ -1,2 +1,2 @@
-key: TWITTER_KEY
-secret: TWITTER_SECRET
+key: ENV['TWITTER_KEY']
+secret: ENV['TWITTER_SECRET']
