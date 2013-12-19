@@ -17,4 +17,4 @@
 .DS_Store
 
 # Files containing sensitive stuff
-config/mongo.yml
+
