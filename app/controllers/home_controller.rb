@@ -1,7 +1,7 @@
 require './lib/bird'
 
 class HomeController < ApplicationController
-  expose :tweets, :screen_name, :mentions
+  expose :tweets, :screen_name, :mentions, :last_update
   before_action :update_tweets, only: :dashboard
 
   helper_method :profile_pic_url
@@ -22,7 +22,7 @@ class HomeController < ApplicationController
   end
 
   def update_tweets
-   Bird.new(current_user).choke_on(hashtag)
+    self.last_update = Bird.new(current_user).choke_on(hashtag)
   end
   protected :update_tweets
 

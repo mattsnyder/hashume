@@ -3,11 +3,21 @@ class Bird
     @user = user
   end
 
+  def updated_recently?(hashume)
+    update = BirdUpdateRepository.find_by_id(hashume.to_s)
+    return false unless update
+
+    update.last_update > 2.minutes.ago
+  end
+
   def choke_on(hashtag)
-    results = petey.search "##{hashtag} from:#{@user.screen_name}"
     hashume = Hashume.new @user.screen_name, hashtag
+    return if updated_recently?(hashume)
+
+    results = petey.search "##{hashtag} from:#{@user.screen_name}"
 
     results.each do |t|
+      # Store the tweet
       tweet = Tweet.new(
                         screen_name: @user.screen_name,
                         id: t.id,
@@ -17,10 +27,9 @@ class Bird
                         created_at: t.created_at,
                         uri: t.uri.to_s
                         )
-
       TweetRepository.save tweet
 
-      # Track tweets
+      # Store tweets by tweeter and hash (hashume)
       TweetByHashumeRepository.save TweetByHashume.new(hashume: hashume.to_s, tweet: TweetRepository.serialize(tweet))
       t.user_mentions.each do |u|
         mentioned = petey.user(u.id)
@@ -34,18 +43,20 @@ class Bird
                               statuses_count: mentioned.statuses_count,
                               profile_image_normal: mentioned.profile_image_uri(:bigger).to_s,
                               profile_image_mini: mentioned.profile_image_uri(:normal).to_s )
-
-
         TweeterRepository.save tweeter
 
-        # Track mentions
+        # Store mentions by tweeter and hash (hashume)
         MentionByHashumeRepository.save MentionByHashume.new(hashume: hashume.to_s, mention: TweeterRepository.serialize(tweeter))
       end
     end
+
+    BirdUpdateRepository.save BirdUpdate.new(id: hashume.to_s, last_update: Time.now)
   end
 
   def petey
-    @client ||= Twitter::REST::Client.new do |config|
+    Rails.logger.info "Accessing the bird"
+
+    @pretty_bird ||= Twitter::REST::Client.new do |config|
       config.consumer_key        = TwitterConfig.key
       config.consumer_secret     = TwitterConfig.secret
       config.access_token        = @user.oauth_token
