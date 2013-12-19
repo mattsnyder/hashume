@@ -1,6 +1,12 @@
 class HomeController < ApplicationController
   expose :tweets, :screen_name, :mentions
-  before_action :update_tweets, only: :dashboard
+  # before_action :update_tweets, only: :dashboard
+
+  helper_method :profile_pic_url
+
+  def profile_pic_url(name)
+    self.mentions.detect{|m| m['name'] == name}['profile_image_mini']
+  end
 
   def index; end
 
@@ -15,7 +21,7 @@ class HomeController < ApplicationController
   end
 
   def update_tweets
-    tweets = twitter.search "#{hashtag} from:#{current_user.screen_name}"
+    tweets = twitter.search "##{hashtag} from:#{current_user.screen_name}"
     debug %(Located #{tweets.count} tweets)
     tweets.each do |t|
       debug "Match: #{t.inspect}"

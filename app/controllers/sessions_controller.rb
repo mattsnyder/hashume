@@ -24,7 +24,6 @@ class SessionsController < ApplicationController
                 oauth_token: stuff['extra']['access_token'].token,
                 oauth_secret: stuff['extra']['access_token'].secret
                 )
-
   end
 
   def auth_hash

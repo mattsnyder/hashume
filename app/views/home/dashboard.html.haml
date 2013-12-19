@@ -41,11 +41,11 @@
 
                     .mentions
                       %ul.inline-list
-                        - twit[:user_mentions].each do |mention|
+                        - twit[:user_mentions].each do |name|
                           %li
-                            = link_to "http://www.twitter.com/#{mention}" do
-                              .user.avatar{title: mention, class:'has-tip tip-top', data:{tooltip:''}}
-                                / %img.th{src: mentions.detect{|m| m['screen_name'] == mention}['profile_image_normal'] }
+                            = link_to "http://www.twitter.com/#{name}" do
+                              .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
+                                %img.th{src: profile_pic_url(name)}
                   .large-3.columns
                     .map
                       %img.th{src:"http://maps.googleapis.com/maps/api/staticmap?center=Austin,TX&zoom=13&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C30.266109942151,-97.745935320854"}
