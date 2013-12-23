@@ -15,4 +15,10 @@
 //= require foundation
 //= require turbolinks
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation({
+  orbit: {
+    animation: 'slide',
+    pause_on_hover: false,
+    timer_speed: 5000
+  }
+}); });
