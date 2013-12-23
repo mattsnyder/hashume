@@ -2,12 +2,24 @@
   .row
     .large-12.columns
       .text-center
-        %h1= "##{hashtag} application"
-        %p.lead
-          Meet someone? Include the
-          %span.label= "##{hashtag}"
-          in your tweets and revisit that conversation
-        %p (This desciption sounds like a dating app)
-        = link_to '/auth/twitter', :class => 'button login large' do
-          %i.fi-social-twitter
-          %span Login with Twitter
+        %img{class:'logo', src:'/assets/main-hashume-logo.svg', height:'100', width:'200'}
+  .row
+    .large-12.columns
+      %ul.blocks.example-orbit-content{"data-orbit" => ""}
+        %li{"data-orbit-slide" => "headline-1"}
+          .text-center
+            %h1 Meet someone at a highly social event
+        %li{"data-orbit-slide" => "headline-2"}
+          .text-center
+            %h1
+              Tweet them &amp; include the hashtag
+              %span= "##{hashtag}"
+        %li{"data-orbit-slide" => "headline-3"}
+          .text-center
+            %h1 Hashume will track your connections. Follow up later.
+
+#login
+  .text-center
+    = link_to '/auth/twitter', :class => 'large button login' do
+      %i.fi-social-twitter
+      %span Login with Twitter
