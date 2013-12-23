@@ -10,9 +10,11 @@
  *
  *= require_self
  */
+
 @import 'compass';
+@import 'settings';
 @import 'foundation-icons';
 @import 'foundation_and_overrides';
-@import 'settings';
+
 @import 'home';
 @import 'dashboard';

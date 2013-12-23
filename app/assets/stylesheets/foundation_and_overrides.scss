@@ -1,4 +1,9 @@
 // Foundation Sass Variables Go Here!
 // More information about Foundation + Sass can be found here:
 // http://foundation.zurb.com/docs/
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900);
+$header-font-family: 'Source Sans Pro', sans-serif;
+$paragraph-font-family: 'Source Sans Pro', sans-serif;
+$paragraph-font-color: $black;
+$button-font-family: 'Source Sans Pro', sans-serif;
 @import 'foundation';

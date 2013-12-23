@@ -1,14 +1,15 @@
 /* Include Foundation Variables */
 
 /* Colors */
-$black: #222222;
+$black: #6B7579;
 $light: #f5f5f5;
 $ccgrey:#CCCCCC;
-$green:#c5e981;
+$green:#2C864E;
 $color: #454545;
-$red:#f95353;
-$blue:#0C77B9;
+$red:#ec4737;
+$blue:#5d98a8;
 $orange: #f39c1f;
+$lightblue:#ABB6BD;
 
 /* Mixins */
 @mixin shadow {
@@ -16,7 +17,17 @@ $orange: #f39c1f;
 }
 
 /* Default Styles */
-body {background: $light}
-footer {padding: 50px 0;}
+body {
+  background: $light;
+
+}
+footer {
+  padding: 20px 0;
+
+  p {
+    margin: 0;
+    color: $lightblue;
+  }
+}
 .has-tip {cursor: pointer;}
 p span.label {font-size: inherit;background: $orange;}
