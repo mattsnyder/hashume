@@ -13,9 +13,7 @@ class Bird
   def choke_on(hashtag)
     hashume = Hashume.new @user.screen_name, hashtag
     return if updated_recently?(hashume)
-
     results = petey.search "##{hashtag} from:#{@user.screen_name}"
-
     results.each do |t|
       # Store the tweet
       tweet = Tweet.new(
@@ -25,7 +23,10 @@ class Bird
                         hashtags: t.hashtags.map(&:text),
                         user_mentions: t.user_mentions.map(&:name),
                         created_at: t.created_at,
-                        uri: t.uri.to_s
+                        uri: t.uri.to_s,
+                        coordinates: Maybe(t.geo.coordinates) {[]},
+                        source:t.source,
+                        media:build_media_object(t.media)
                         )
       TweetRepository.save tweet
 
@@ -62,5 +63,14 @@ class Bird
       config.access_token        = @user.oauth_token
       config.access_token_secret = @user.oauth_secret
     end
+  end
+
+  def build_media_object(media_array)
+    new_media_hash = Hash.new
+    media_array.each do |value|
+      new_media_hash[:media_url] = value[:media_url].to_s
+      new_media_hash[:url] = value[:url].to_s
+    end
+    new_media_hash
   end
 end

@@ -1,22 +1,15 @@
-/* Include Foundation Variables */
-
 /* Colors */
-$black: #222222;
+$black: #252525;
 $light: #f5f5f5;
 $ccgrey:#CCCCCC;
-$green:#c5e981;
+$green:#2C864E;
 $color: #454545;
-$red:#f95353;
-$blue:#0C77B9;
+$red:#ec4737;
+$blue:#5d98a8;
 $orange: #f39c1f;
+$lightblue:#ABB6BD;
 
 /* Mixins */
 @mixin shadow {
     @include box-shadow(0 1px 4px 2px rgba(black, 0.1));
 }
-
-/* Default Styles */
-body {background: $light}
-footer {padding: 50px 0;}
-.has-tip {cursor: pointer;}
-p span.label {font-size: inherit;background: $orange;}
