@@ -13,11 +13,9 @@ class Bird
   def choke_on(hashtag)
     hashume = Hashume.new @user.screen_name, hashtag
     return if updated_recently?(hashume)
-    # results = petey.search "##{hashtag} from:#{@user.screen_name}"
-    results = petey.search "from:andreortiz"
+    results = petey.search "##{hashtag} from:#{@user.screen_name}"
     results.each do |t|
       # Store the tweet
-
       tweet = Tweet.new(
                         screen_name: @user.screen_name,
                         id: t.id,

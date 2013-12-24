@@ -1,3 +1,3 @@
-class TwitterConfig
+class HashuConfig
   extend Configurethis
 end

@@ -1,4 +1,5 @@
 require './lib/null_object'
+require './lib/hashu_config'
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
@@ -6,7 +7,11 @@ class ApplicationController < ActionController::Base
 
   # Helper method to parse current hashtag site being accessed (supports localhost too)
   def hashtag
-    request.host.split('.')[-2] || request.host
+    if HashuConfig.use_domain == true
+      request.host.split('.')[-2] || request.host
+    else
+      "hashu"
+    end
   end
 
   protected
