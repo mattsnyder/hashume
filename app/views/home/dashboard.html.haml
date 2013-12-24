@@ -38,7 +38,7 @@
 
               - if twit[:coordinates].present?
                 .map
-                  %img{src:"http://maps.googleapis.com/maps/api/staticmap?center=Austin,TX&zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                  %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
               .mentions
                 %ul.inline-list
                   - twit[:user_mentions].each do |name|
