@@ -2,24 +2,21 @@
   .row
     .large-12.columns
       .text-center
-        %img{class:'logo', src:'/assets/main-hashume-logo.svg', height:'100', width:'200'}
+        %img{class:'logo', src:'/assets/main-hashume-logo.svg'}
   .row
     .large-12.columns
-      %ul.blocks.example-orbit-content{"data-orbit" => ""}
-        %li{"data-orbit-slide" => "headline-1"}
-          .text-center
-            %h1 Meet someone at a highly social event
-        %li{"data-orbit-slide" => "headline-2"}
-          .text-center
-            %h1
-              Tweet them &amp; include the hashtag
-              %span= "##{hashtag}"
-        %li{"data-orbit-slide" => "headline-3"}
-          .text-center
-            %h1 Hashume will track your connections. Follow up later.
-
-#login
-  .text-center
-    = link_to '/auth/twitter', :class => 'large button login' do
-      %i.fi-social-twitter
-      %span Login with Twitter
+      .orbit-step.step-1
+        %ul.blocks.orbit-content{"data-orbit" => ""}
+          %li{"data-orbit-slide" => "headline-1"}
+            .text-center
+              %h1 Did you just meet someone interesting at a highly social event?
+          %li{"data-orbit-slide" => "headline-2"}
+            .text-center
+              %h1
+                Shoot them a quick Tweet. Be sure to include the hashtag
+                %span= "##{hashtag}"
+          %li{"data-orbit-slide" => "headline-3"}
+            .text-center
+              %h1
+                %span HASHU
+                will track the connections you make so you can follow up later.
