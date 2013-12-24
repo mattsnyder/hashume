@@ -1,0 +1,43 @@
+/* Default Styles */
+body {
+  background: $black;
+}
+img {margin: 0;}
+/* Typography */
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,900);
+h1 {
+  margin-bottom: 10px;
+  font-weight: 900;
+  color: white;
+  font-size: 3em;
+  span {
+    font-weight: inherit;
+    color:$red;
+  }
+}
+
+/* Masonry
+http://patterntap.com/code/stacking-columns-layout-masonry
+*/
+.masonry-brick { width: 220px; margin: 10px; float: left;  }
+#masonryContainer { width: 0 auto; }
+
+footer {
+  padding: 20px 0;
+  p {
+    margin: 0;
+    color: $black*2;
+
+    i.fi-heart {color: $red;}
+  }
+}
+
+/* Foundation Tooltips */
+.has-tip {
+  cursor: pointer;
+  border:none;
+
+  &:hover {
+    border:none;
+  }
+}

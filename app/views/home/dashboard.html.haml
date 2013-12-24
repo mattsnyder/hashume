@@ -2,49 +2,48 @@
   .row
     .large-12.columns
       .text-center
-        %h1= "Your ##{hashtag} data"
+        =link_to root_path do
+          %img{class:'logo', src:'/assets/main-hashume-logo.svg'}
 
 #people
   .row
     .large-12.columns
-      %h2 People you've met
-      %ul.large-block-grid-3
-        - mentions.each do |mentioned|
-          %li
-            .info.text-center
-              = link_to "http://twitter.com/##{mentioned['screen_name']}" do
-                .avatar
-                  %img.th{src: mentioned['profile_image_normal'] }
-                %h4= mentioned['name']
-              %p.bio= mentioned['description']
+      .text-center
+        %h1 People you've met
+        %ul.large-block-grid-3
+          - mentions.each do |mentioned|
+            %li
+              .info
+                = link_to "http://twitter.com/#{mentioned['screen_name']}" do
+                  %img{src: mentioned['profile_image_normal'] }
+                  %h4= mentioned['name']
+                %p.bio= mentioned['description']
 
 
 #tweets
   .row
     .large-12.columns
-      %h2 Tweets you've twatted
+      .text-center
+        %h1 Your tweets
+      #masonryContainer.tweet-grid
+        - tweets.each do |twit|
+          .tweet.panel.masonry-brick
+            - if !twit[:media].blank?
+              %img{src:twit[:media][:media_url]}
+            %p= twit[:text]
 
-      - ['before now'].each do |time_span|
-        .row.date-group
-          .large-2.columns
-            %date= time_span
-          .large-10.columns
-            - tweets.each do |twit|
-              .tweet.panel
-                .row
-                  .large-9.columns
-                    %p.bio.lead
-                      = twit[:text]
-                      - twit[:hashtags].each do |tag|
-                        %span.label= link_to "#" + tag, "http://www.twitter.com/search?q=%23#{tag}"
+            .hashes
+              - twit[:hashtags].each do |tag|
+                %span.label= tag
 
-                    .mentions
-                      %ul.inline-list
-                        - twit[:user_mentions].each do |name|
-                          %li
-                            = link_to "http://www.twitter.com/#{name}" do
-                              .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
-                                %img.th{src: profile_pic_url(name)}
-                  .large-3.columns
-                    .map
-                      %img.th{src:"http://maps.googleapis.com/maps/api/staticmap?center=Austin,TX&zoom=13&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C30.266109942151,-97.745935320854"}
+              - if twit[:coordinates].present?
+                .map
+                  %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+              .mentions
+                %ul.inline-list
+                  - twit[:user_mentions].each do |name|
+                    / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
+                    %li
+                      = link_to "http://www.twitter.com/#{name}" do
+                        .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
+                          %img{src: profile_pic_url(name)}

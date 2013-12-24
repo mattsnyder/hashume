@@ -16,6 +16,6 @@
 
 .DS_Store
 
-# Files containing sensitive stuff
-
+# Files containing sensitive or local stuff
+config/twitter_config.yml
 .powenv
