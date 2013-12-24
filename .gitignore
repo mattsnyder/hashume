@@ -18,3 +18,5 @@
 
 # Files containing sensitive stuff
 
+config/twitter_config.yml
+.powenv

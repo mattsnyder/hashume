@@ -1,19 +1,11 @@
-#people,
-#tweets {
-  padding: 50px 0;
-  h2 {
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 50px;
-    font-size:3.5em;
-    font-weight: 900;
-  }
-}
-
 #people {
+  padding: 50px 0;
+  background: white;
+  h1 {color: $black}
+
   .info {
     img {
-      margin-bottom: 10px;
+      @include border-radius(100px);
     }
     p.bio {
       @extend .hide-for-small;
@@ -22,41 +14,47 @@
   }
 }
 
-.label {
-   a {
-      color: white;
-   }
-}
-
 #tweets {
-  h2 {color: white}
+  padding: 50px 0;
   background: $black;
 
   .tweet.panel {
-    background: white;
-    @include clearfix;
+    @extend .radius;
+    @include shadow;
+    padding: 0;
+    border:none;
+    overflow: hidden;
+
+    p {
+      padding: 10px;
+    }
+
+    .hashes {
+      padding: 5px;
+      margin: 10px 0;
+      span.label {
+        background: $red;
+        @extend .round;
+        line-height: 20px;
+        font-size: .8em;
+        padding: 5px 20px;
+      }
+    }
 
     .mentions {
+
+      border-top:1px solid $ccgrey;
       .inline-list {
         padding: 5px;
-        img {margin: 0;}
+        img {
+          margin: 0;
+          @include border-radius(100px);
+        }
       }
     }
 
     .map {
-      background: $green;
-    }
-  }
 
-  .date-group {
-    border-top: 1px solid white;
-    padding-top: 10px;
-
-    date {
-      color: white;
-      display: block;
-      font-weight: 200;
-      font-size: 1.5em;
     }
   }
 }
