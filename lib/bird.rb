@@ -3,16 +3,16 @@ class Bird
     @user = user
   end
 
-  def updated_recently?(hashume)
-    update = BirdUpdateRepository.find_by_id(hashume.to_s)
+  def updated_recently?(hashu)
+    update = BirdUpdateRepository.find_by_id(hashu.to_s)
     return false unless update
 
     update.last_update > 2.minutes.ago
   end
 
   def choke_on(hashtag)
-    hashume = Hashume.new @user.screen_name, hashtag
-    return if updated_recently?(hashume)
+    hashu = Hashu.new @user.screen_name, hashtag
+    return if updated_recently?(hashu)
     results = petey.search "##{hashtag} from:#{@user.screen_name}"
     results.each do |t|
       # Store the tweet
@@ -30,8 +30,8 @@ class Bird
                         )
       TweetRepository.save tweet
 
-      # Store tweets by tweeter and hash (hashume)
-      TweetByHashumeRepository.save TweetByHashume.new(hashume: hashume.to_s, tweet: TweetRepository.serialize(tweet))
+      # Store tweets by tweeter and hash (hashu)
+      TweetByHashuRepository.save TweetByHashu.new(hashu: hashu.to_s, tweet: TweetRepository.serialize(tweet))
       t.user_mentions.each do |u|
         mentioned = petey.user(u.id)
         tweeter = Tweeter.new(
@@ -46,12 +46,12 @@ class Bird
                               profile_image_mini: mentioned.profile_image_uri(:normal).to_s )
         TweeterRepository.save tweeter
 
-        # Store mentions by tweeter and hash (hashume)
-        MentionByHashumeRepository.save MentionByHashume.new(hashume: hashume.to_s, mention: TweeterRepository.serialize(tweeter))
+        # Store mentions by tweeter and hash (hashu)
+        MentionByHashuRepository.save MentionByHashu.new(hashu: hashu.to_s, mention: TweeterRepository.serialize(tweeter))
       end
     end
 
-    BirdUpdateRepository.save BirdUpdate.new(id: hashume.to_s, last_update: Time.now)
+    BirdUpdateRepository.save BirdUpdate.new(id: hashu.to_s, last_update: Time.now)
   end
 
   def petey

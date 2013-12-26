@@ -1,4 +1,4 @@
-class Hashume
+class Hashu
   def initialize(screen_name, hashtag)
     @screen_name = screen_name
     @hashtag = hashtag

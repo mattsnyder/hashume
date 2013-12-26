@@ -13,12 +13,12 @@ class HomeController < ApplicationController
 
   def dashboard
     self.screen_name = current_user.screen_name
-    self.tweets = TweetByHashumeRepository.find_by_hashume(hashume.to_s).map(&:tweet).sort{|x,y| y[:created_at] <=> x[:created_at]}
-    self.mentions = MentionByHashumeRepository.find_by_hashume(hashume.to_s).map(&:mention)
+    self.tweets = TweetByHashuRepository.find_by_hashu(hashu.to_s).map(&:tweet).sort{|x,y| y[:created_at] <=> x[:created_at]}
+    self.mentions = MentionByHashuRepository.find_by_hashu(hashu.to_s).map(&:mention)
   end
 
-  def hashume
-    @hashume ||= Hashume.new current_user.screen_name, hashtag
+  def hashu
+    @hashu ||= Hashu.new current_user.screen_name, hashtag
   end
 
   def update_tweets
