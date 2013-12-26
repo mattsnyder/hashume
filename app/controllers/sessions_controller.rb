@@ -7,13 +7,6 @@ class SessionsController < ApplicationController
     redirect_to dashboard_path
   end
 
-  # followers_count: stuff['info'].followers_count,
-  # friends_count: stuff['info'].friends_count,
-  # statuses_count: stuff['info'].statuses_count,
-  # profile_image_normal: stuff['info'].profile_image_uri(:normal).to_s,
-  # profile_image_mini: stuff['info'].profile_image_uri(:mini).to_s,
-
-
   private
   def build_tweeter(stuff)
     Tweeter.new(

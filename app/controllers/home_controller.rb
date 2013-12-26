@@ -9,7 +9,9 @@ class HomeController < ApplicationController
     self.mentions.detect{|m| m['name'] == name}['profile_image_mini']
   end
 
-  def index; end
+  def index
+    redirect_to :dashboard if current_user
+  end
 
   def dashboard
     self.screen_name = current_user.screen_name
