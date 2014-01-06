@@ -21,6 +21,8 @@ gem 'twitter', '~> 5.1.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 gem 'configurethis', '~> 1.0.5'
 
+gem 'newrelic_rpm'
+
 group :staging, :production do
   gem 'rails_12factor'
 end

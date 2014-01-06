@@ -100,6 +100,7 @@ GEM
       bson (~> 1.7.0)
     multi_json (1.8.2)
     multipart-post (1.2.0)
+    newrelic_rpm (3.7.1.182)
     oauth (0.4.7)
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
@@ -222,6 +223,7 @@ DEPENDENCIES
   haml
   jquery-rails (~> 3.0.4)
   mongo (= 1.7.0)
+  newrelic_rpm
   omniauth-twitter (~> 1.0.1)
   powder
   pry
