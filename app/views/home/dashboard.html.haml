@@ -1,14 +1,15 @@
-#introduction
+#header
   .row
     .large-12.columns
       .text-center
-        =link_to root_path do
-          %img{class:'logo', src:'/assets/main-hashume-logo.svg'}
-
+        =render 'shared/logo'
+%form#search_hash_form
+  .field
+    %input{type:'text', name:'search'}
 #people
   .row
     .large-12.columns
-      .text-center
+      .text-center.grey-back
         %h1 People you've met
         %ul.large-block-grid-3
           - mentions.each do |mentioned|
@@ -28,22 +29,18 @@
       #masonryContainer.tweet-grid
         - tweets.each do |twit|
           .tweet.panel.masonry-brick
+            %p= hashtag_sniffer twit[:text]
             - if !twit[:media].blank?
               %img{src:twit[:media][:media_url]}
-            %p= twit[:text]
 
-            .hashes
-              - twit[:hashtags].each do |tag|
-                %span.label= tag
-
-              - if twit[:coordinates].present?
-                .map
-                  %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
-              .mentions
-                %ul.inline-list
-                  - twit[:user_mentions].each do |name|
-                    / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
-                    %li
-                      = link_to "http://www.twitter.com/#{name}" do
-                        .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
-                          %img{src: profile_pic_url(name)}
+            - if twit[:coordinates].present?
+              .map
+                %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+            .mentions
+              %ul.inline-list
+                - twit[:user_mentions].each do |name|
+                  / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
+                  %li
+                    = link_to "http://www.twitter.com/#{name}" do
+                      .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
+                        %img{src: profile_pic_url(name)}

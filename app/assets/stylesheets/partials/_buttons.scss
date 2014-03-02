@@ -1,0 +1,13 @@
+.button, button, input[type='submit'] {
+  @extend .button;
+  @extend .round;
+
+  &.secondary {
+    background: rgba($black, 0.5);
+    color: rgba(white, 0.5);
+    &:hover {
+      background: rgba($black, 0.8);
+      color: white;
+    }
+  }
+}

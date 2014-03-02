@@ -9,12 +9,21 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+
  */
 
 @import 'compass';
-@import 'settings';
 @import 'foundation-icons';
+@import 'settings';
 @import 'foundation_and_overrides';
+
+/* Global and partial style imports */
 @import 'global';
+@import 'partials/typography';
+@import 'partials/authors';
+@import 'partials/buttons';
+
+/* View styles */
 @import 'home';
 @import 'dashboard';
+

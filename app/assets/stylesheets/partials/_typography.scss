@@ -1,0 +1,10 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900);
+
+h1 {
+  font-weight: 200;
+  color: white;
+  span.bold {
+    font-weight: 900;
+    color: $red;
+  }
+}

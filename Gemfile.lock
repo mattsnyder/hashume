@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/Compass/compass-rails.git
-  revision: 32c16cb90f78053310b35199a970c53355bcd300
-  branch: rails4-hack
-  specs:
-    compass-rails (1.0.3)
-      compass (>= 0.12.2, < 0.14)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -42,7 +34,7 @@ GEM
       bson (~> 1.7.0)
     buftok (0.2.0)
     builder (3.1.4)
-    chunky_png (1.2.9)
+    chunky_png (1.3.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -55,20 +47,21 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    compass-rails (1.1.3)
+      compass (>= 0.12.2)
     configurethis (1.0.5)
     curator (0.10.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       json
       riak-client (>= 1.0.0)
-    descendants_tracker (0.0.3)
     diff-lcs (1.2.5)
-    equalizer (0.0.8)
+    equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.0.2)
-    faraday (0.8.8)
-      multipart-post (~> 1.2.0)
-    foundation-rails (5.0.2.0)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
+    foundation-rails (5.1.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     fssm (0.2.10)
@@ -80,7 +73,7 @@ GEM
     hike (1.2.3)
     http (0.5.0)
       http_parser.rb
-    http_parser.rb (0.5.3)
+    http_parser.rb (0.6.0)
     i18n (0.6.9)
     innertube (1.0.2)
     jquery-rails (3.0.4)
@@ -91,7 +84,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    memoizable (0.2.0)
+    memoizable (0.4.0)
       thread_safe (~> 0.1.3)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -99,7 +92,8 @@ GEM
     mongo (1.7.0)
       bson (~> 1.7.0)
     multi_json (1.8.2)
-    multipart-post (1.2.0)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     newrelic_rpm (3.7.1.182)
     oauth (0.4.7)
     omniauth (1.1.4)
@@ -192,18 +186,16 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (1.3.1)
-      coffee-rails
-    twitter (5.1.1)
+    twitter (5.7.1)
       addressable (~> 2.3)
       buftok (~> 0.2.0)
-      descendants_tracker (~> 0.0.1)
-      equalizer (~> 0.0.7)
-      faraday (>= 0.8, < 0.10)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
       http (~> 0.5.0)
-      http_parser.rb (~> 0.5.0)
+      http_parser.rb (~> 0.6.0)
       json (~> 1.8)
-      memoizable (~> 0.2.0)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
       simple_oauth (~> 0.2.0)
     tzinfo (0.3.38)
     uglifier (2.3.2)
@@ -216,10 +208,10 @@ PLATFORMS
 DEPENDENCIES
   bson_ext (= 1.7.0)
   coffee-rails (~> 4.0.0)
-  compass-rails!
+  compass-rails
   configurethis (~> 1.0.5)
   curator (~> 0.10.0)
-  foundation-rails (~> 5.0.2)
+  foundation-rails (~> 5.1.0)
   haml
   jquery-rails (~> 3.0.4)
   mongo (= 1.7.0)
@@ -233,6 +225,5 @@ DEPENDENCIES
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
   therubyracer
-  turbolinks
-  twitter (~> 5.1.1)
+  twitter (~> 5.7.1)
   uglifier (>= 1.3.0)

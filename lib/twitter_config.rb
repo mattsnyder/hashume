@@ -1,10 +1,8 @@
 class TwitterConfig
-
   def self.key
-    ENV['TWITTER_KEY']
+    '3FEAsoNseOwvSbXaLnHuEQ'
   end
   def self.secret
-    ENV['TWITTER_SECRET']
+    'htN353Rec9y73vrbh5lQXCLCES3BnSSKhiKBPEfQ'
   end
-
 end

@@ -1,6 +1,8 @@
 #people {
-  padding: 50px 0;
   background: white;
+
+  .grey-back {background: $light}
+
   h1 {color: $black}
 
   .info {
@@ -16,7 +18,6 @@
 
 #tweets {
   padding: 50px 0;
-  background: $black;
 
   .tweet.panel {
     @extend .radius;
@@ -27,6 +28,20 @@
 
     p {
       padding: 10px;
+      text-align: center;
+      @extend .lead;
+      span {
+        @extend .round;
+        @extend .label;
+        background: $red;
+        line-height: 20px;
+        font-size: .8em;
+        padding: 3px 15px;
+        margin: 0 5px 5px 0;
+        &:before {
+          content:'#';
+        }
+      }
     }
 
     .hashes {
@@ -42,13 +57,23 @@
     }
 
     .mentions {
-
+      background: $light;
       border-top:1px solid $ccgrey;
       .inline-list {
         padding: 5px;
-        img {
-          margin: 0;
-          @include border-radius(100px);
+        margin: -10px 0 0 0;
+        li {
+          margin: 10px 10px 0 0;
+          img {
+            margin: 0;
+            @include border-radius(100px);
+            border: 3px solid white;
+
+            &:hover {
+              cursor:pointer;
+              @include shadow;
+            }
+          }
         }
       }
     }

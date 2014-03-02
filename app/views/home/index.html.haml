@@ -1,22 +1,27 @@
-#introduction
-  .row
-    .large-12.columns
-      .text-center
-        %img{class:'logo', src:'/assets/main-hashume-logo.svg'}
-  .row
-    .large-12.columns
-      .orbit-step.step-1
-        %ul.blocks.orbit-content{"data-orbit" => ""}
-          %li{"data-orbit-slide" => "headline-1"}
-            .text-center
-              %h1 Did you just meet someone interesting at a highly social event?
-          %li{"data-orbit-slide" => "headline-2"}
-            .text-center
-              %h1
-                Shoot them a quick Tweet. Be sure to include the hashtag
-                %span= "##{hashtag}"
-          %li{"data-orbit-slide" => "headline-3"}
-            .text-center
-              %h1
-                %span HASHU
-                will track the connections you make so you can follow up later.
+.row
+  .large-12.columns
+    .text-center
+      =render 'shared/logo'
+.row
+  .large-12.columns
+    .orbit-step.step-1
+      %ul.orbit-content{"data-orbit" => ""}
+        %li{"data-orbit-slide" => "headline-1"}
+          .text-center
+            %h1
+              Did you just
+              %span.bold meet someone interesting
+              at a highly social event?
+        %li{"data-orbit-slide" => "headline-2"}
+          .text-center
+            %h1
+              Shoot them a quick Tweet. Be sure to include the hashtag
+              %span.bold= "##{hashtag}"
+        %li{"data-orbit-slide" => "headline-3"}
+          .text-center
+            %h1
+              %span.bold Hashu
+              will track the connections you make so you can follow up later.
+
+    .text-center
+      =link_to 'Skip this and Sign In with Twitter', '/auth/twitter', class:'button secondary small'
