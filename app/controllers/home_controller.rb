@@ -17,6 +17,8 @@ class HomeController < ApplicationController
   def dashboard
     @body_class = 'dashboard'
     self.screen_name = current_user.screen_name
+    # self.tweets = {}
+    # self.mentions = {}
     self.tweets = TweetByHashuRepository.find_by_hashu(hashu.to_s).map(&:tweet).sort{|x,y| y[:created_at] <=> x[:created_at]}
     self.mentions = MentionByHashuRepository.find_by_hashu(hashu.to_s).map(&:mention)
   end

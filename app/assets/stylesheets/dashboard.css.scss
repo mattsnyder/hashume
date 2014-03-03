@@ -1,85 +1,205 @@
-#people {
-  background: white;
+body.dashboard {
+  background: $dark fixed url(/assets/bgimage.jpg) center bottom;
+  background-size: cover;
 
-  .grey-back {background: $light}
-
-  h1 {color: $black}
-
-  .info {
-    img {
-      @include border-radius(100px);
+  .off-canvas-wrap {
+    border-top: 5px solid $red;
+    /*nav.tab-bar {background: red;}*/
+    .tab-bar-section {
+      padding: 0;
+      &.middle {
+        left: 0;
+      }
     }
-    p.bio {
-      @extend .hide-for-small;
-      color: $black;
+  }
+
+  /*.logo {
+    svg#hashu_logo_type_svg {
+      max-height: 50px;
+      max-width: 140px;
+      fill:white;
+      top: 5px;
+      left: 20px;
+      position: relative;
+    }
+  }*/
+
+  section.right-small {
+    a.right-off-canvas-toggle.menu-icon {
+      span {
+        @include box-shadow(none);
+
+        &:before {
+          @extend .fi-results-demographics;
+          color:white;
+          font-size: 3em;
+          position: relative;
+          top: 17px;
+          right:50px;
+        }
+      }
+    }
+  }
+}
+
+aside.right-off-canvas-menu {
+  background:$dark;
+
+  ul.off-canvas-list#people {
+    li {
+      label {
+        padding: 10px;
+        color: rgba(white, 0.5);
+        text-align: center;
+        background: rgba(black, 0.3);
+        font-size: rem-calc(22);
+        font-weight: 200;
+        text-transform: none;
+      }
+      a {
+        border: none;
+        position: relative;
+        @include transition(background 0.5s);
+        cursor: pointer;
+        &:hover { background:rgba(white, 0.1); }
+      }
+      .info {
+        img {
+          @include border-radius(100px);
+        }
+        h3 {
+          color: white;
+          margin: 0;
+          font-size: rem-calc(18);
+        }
+        span {
+          color: $red;
+        }
+      }
+    }
+  }
+}
+
+form#search_hash_form {
+  margin: 0;
+  position: relative;
+  top:12px;
+  left:12px;
+  width: 100%;
+
+  .field {
+    input[type='text'] {
+      font-size: rem-calc(32);
+      font-weight: 200;
+      height: 70px;
+      color: white;
+      @extend .radius;
+      text-indent: 60px;
+      background: rgba(black, 0.6);
+      border: none;
+    }
+    &:before {
+      @extend .fi-magnifying-glass;
+      color:rgba(white, 0.3);
+      font-size: 2.5em;
+      position: absolute;
+      top: 15px;
+      left: 23px;
     }
   }
 }
 
 #tweets {
+  background: $light;
   padding: 50px 0;
+  /* Masonry
+  http://patterntap.com/code/stacking-columns-layout-masonry
+  */
 
-  .tweet.panel {
-    @extend .radius;
-    @include shadow;
-    padding: 0;
-    border:none;
-    overflow: hidden;
+  #masonryContainer {
+    .masonry-brick {
+      width: 25%;
+      margin: 0 0 0 0;
+      @media #{$small-only} {width: 100%;}
+      .tweet.panel {
+        margin: 0 10px 10px 0;
+        padding: 0;
+        border:none;
+        overflow: hidden;
+        background: white;
+        @include shadow($ccgrey, 0.3);
+        @media #{$small-only} {margin: 0;}
 
-    p {
-      padding: 10px;
-      text-align: center;
-      @extend .lead;
-      span {
-        @extend .round;
-        @extend .label;
-        background: $red;
-        line-height: 20px;
-        font-size: .8em;
-        padding: 3px 15px;
-        margin: 0 5px 5px 0;
-        &:before {
-          content:'#';
-        }
-      }
-    }
+        p {
+          padding: 20px;
+          margin: 0;
 
-    .hashes {
-      padding: 5px;
-      margin: 10px 0;
-      span.label {
-        background: $red;
-        @extend .round;
-        line-height: 20px;
-        font-size: .8em;
-        padding: 5px 20px;
-      }
-    }
+          span {
+            @extend .round;
+            @extend .label;
+            background: $red;
+            line-height: 20px;
+            font-size: .8em;
+            padding: 3px 15px;
+            margin: 0 5px 0 0;
 
-    .mentions {
-      background: $light;
-      border-top:1px solid $ccgrey;
-      .inline-list {
-        padding: 5px;
-        margin: -10px 0 0 0;
-        li {
-          margin: 10px 10px 0 0;
-          img {
-            margin: 0;
-            @include border-radius(100px);
-            border: 3px solid white;
-
-            &:hover {
-              cursor:pointer;
-              @include shadow;
+            &:before {
+              content:'#';
             }
           }
         }
+
+        .hashes {
+          padding: 5px;
+          margin: 10px 0;
+
+          span.label {
+            background: $red;
+            @extend .round;
+            line-height: 20px;
+            font-size: .8em;
+            padding: 5px 20px;
+          }
+        }
+
+        .mentions {
+          background: white;
+          /*border-top:1px solid $ccgrey;*/
+
+          .inline-list {
+            padding: 5px;
+            margin: 0;
+            li {
+              margin: 10px 10px 0 0;
+              img {
+                margin: 0;
+                @include border-radius(100px);
+                max-width: 45px;
+                max-height: 45px;
+                &:hover {
+                  cursor:pointer;
+                }
+              }
+            }
+          }
+        }
+
+        .map {
+          border-top:3px solid $map_green*0.8;
+          background: $map_green;
+          text-align: center;
+          height: 100px;
+          overflow: hidden;
+
+          img {
+            max-height: 100px;
+          }
+        }
+
+        &:hover {
+          @include shadow($blue, 0.3);
+        }
       }
-    }
-
-    .map {
-
     }
   }
 }

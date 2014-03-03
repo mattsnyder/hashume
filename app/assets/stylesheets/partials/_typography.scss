@@ -1,10 +1,10 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900);
 
-h1 {
-  font-weight: 200;
-  color: white;
-  span.bold {
-    font-weight: 900;
-    color: $red;
-  }
+.strike { text-decoration: line-through; }
+.italic { font-style: italic; }
+.serif { font-family: Georgia serif; }
+
+span.bold {
+  font-weight: 600;
+  color: $blue;
 }

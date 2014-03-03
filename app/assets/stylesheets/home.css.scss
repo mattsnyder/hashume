@@ -1,67 +1,103 @@
-ul.orbit-slides-container {
-  min-height: 150px;
-  display: block;
-  overflow: hidden;
-  @media #{$small-only} { margin-bottom: 50px; }
+body.index {
+  #header {
+    background: $dark fixed url(/assets/bgimage.jpg) center -300px;
+    background-size: cover;
 
-  h1 {margin-bottom: 20px;}
-}
+    svg#hashu_logo_svg {
+      fill:white;
+      max-width: 200px;
+      max-height: 200px;
+      margin: 40px 0;
 
-/* Foundation Orbit options */
-.orbit-step {
-  &.step-1 .orbit-next-custom:after {content: "Why yes, I did...";}
-  &.step-2 .orbit-next-custom:after {content: "Ok, then what?";}
-  &.step-3 .orbit-next-custom:after {content: "Login and try it out!";}
-  &.step-3 .orbit-next-custom {
-    background: $blue;
-    border-bottom: 4px solid $blue*0.8;
+      @media #{$small-only} {
+        max-width: 140px;
+        max-height: 140px;
+      }
+    }
 
-    span:before {
-      @extend .fi-social-twitter;
+    h1 {
+      font-weight: 200;
       color: white;
-      font-size: 1em;
-      margin: 0 10px 0 0;
+      font-size: rem-calc(52);
     }
 
-    &:hover {
-      background: $blue*1.2;
+    svg#hashu_logo_svg, h1, .button.login {margin: 40px 0 0 0;}
+
+    .button.login {
+      margin-bottom: 40px;
+      @include shadow;
+      @extend .success;
+      padding-left:60px;
+      padding-right:60px;
+      font-weight: 600 !important;
+      font-size: rem-calc(32);
+      color:white;
+      &:before {
+        @extend .fi-social-twitter;
+        color:white;
+        font-size: 1em;
+        margin: 0 10px 0 0;
+      }
+
+      @media #{$small-only} {
+        display: block;
+        width: 100%;
+      }
     }
   }
 }
-.orbit-container {
-  text-align: center;
+section#marketing {
+  padding: 40px 0;
+
+  h2 {
+    font-weight: 600;
+  }
 }
-.orbit-progress {
-  display: none;
-}
-.orbit-next-custom {
-  @extend .button;
-  @extend .round;
+.fake-tweet {
+  background: white;
+  position: relative;
+  margin-top: 40px;
   @include shadow;
-  background: $red;
-  border-bottom: 4px solid $red*0.8;
-  padding-left:60px;
-  padding-right:60px;
-  font-weight: 600 !important;
-  font-size: rem-calc(32);
+  .icon-container {
+    background: $blue;
+    padding: 30px;
 
-  &:hover {background: $red*1.5;}
+    @media #{$small-only} {
+      height: 200px;
+      overflow: hidden;
+      max-height: 195px;
+    }
 
-  &:after {
-    content: "Why yes, I did...";
+    @media #{$medium-only} {
+      height: 200px;
+      overflow: hidden;
+      max-height: 195px;
+    }
 
+    i.fi-social-twitter {
+      font-size: rem-calc(82);
+      color: white;
+      margin: 0;
+      @media #{$small-only} {
+        font-size: rem-calc(52);
+        line-height: 130px;
+        margin-left: -2px;
+      }
+    }
   }
-
-  span {
-    border: none;
+  p {
+    @extend .lead;
+    text-align: left;
+    padding: 20px;
+    margin: 0;
+    @media #{$small-only} {
+      font-size: rem-calc(18);
+    }
   }
-
-  @media #{$small-only} { font-size: rem-calc(18);}
-}
-
-.orbit-prev {
-  display: none;
-}
-.paused {
-  background: green;
+  span.count {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: $ccgrey;
+  }
 }

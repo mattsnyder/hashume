@@ -1,34 +1,8 @@
 /* Default Styles */
 body {
   /*http://www.theoneeyeddog.com/wp-content/uploads/2013/06/IMG_1700.jpg*/
-  background: #362929 fixed url(/assets/bgimage.jpg) center top;
-  background-size: cover;
-
-  &.index,
-  &.dashboard {
-    padding: 100px 0 0 0;
-
-    @media #{$small-only} { padding: 40px 0 0 0; }
-
-    svg#hashu_logo_svg {
-      fill:white;
-      max-width: 200px;
-      max-height: 200px;
-      margin-bottom: 50px;
-
-      @media #{$small-only} {
-        max-width: 140px;
-        max-height: 140px;
-      }
-    }
-  }
+  background: $light;
 }
-
-/* Masonry
-http://patterntap.com/code/stacking-columns-layout-masonry
-*/
-.masonry-brick { width: 302px; margin: 10px; float: left;  }
-#masonryContainer { width: 0 auto; }
 
 /* Foundation Tooltips */
 .has-tip {

@@ -1,46 +1,76 @@
-#header
-  .row
-    .large-12.columns
-      .text-center
-        =render 'shared/logo'
-%form#search_hash_form
-  .field
-    %input{type:'text', name:'search'}
-#people
-  .row
-    .large-12.columns
-      .text-center.grey-back
-        %h1 People you've met
-        %ul.large-block-grid-3
-          - mentions.each do |mentioned|
-            %li
+.off-canvas-wrap
+  .inner-wrap
+    %nav.tab-bar
+      / %section.left-small.logo
+      /   =render 'shared/logo_type'
+      %section.tab-bar-section.middle
+        %form#search_hash_form
+          .field
+            %input{type:'text', name:'search', placeholder:'Search for #hash'}
+      %section.right-small
+        %a.right-off-canvas-toggle.menu-icon
+          %span
+    %aside.right-off-canvas-menu
+      %ul.off-canvas-list#people
+        %li
+          %label People you've tweeted
+        - mentions.each do |mentioned|
+          %li
+            = link_to "http://twitter.com/#{mentioned['screen_name']}" do
               .info
-                = link_to "http://twitter.com/#{mentioned['screen_name']}" do
-                  %img{src: mentioned['profile_image_normal'] }
-                  %h4= mentioned['name']
-                %p.bio= mentioned['description']
+                .row
+                  .small-4.columns
+                    %img{src: mentioned['profile_image_normal']}
+                  .small-8.columns
+                    %h3= mentioned['name']
+                    %span="@#{mentioned['screen_name']}"
+    %section.main-section
+
+      #tweets
+        .row
+          .large-12.columns
+            %ul.large-block-grid-3.small-block-grid-1.tweet-grid#masonryContainer
+              - tweets.each do |twit|
+                %li
+                  .masonry-brick
+                    .tweet.panel
+                      %p= hashtag_sniffer twit[:text]
+                      - if !twit[:media].blank?
+                        %img{src:twit[:media][:media_url]}
+
+                      - if twit[:coordinates].present?
+                        .map
+                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x100&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                      .mentions
+                        %ul.inline-list
+                          - twit[:user_mentions].each do |name|
+                            / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
+                            %li
+                              = link_to "http://www.twitter.com/#{name}" do
+                                .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:'', options:{disable_for_touch:true}}}
+                                  %img{src: profile_pic_url(name)}
+    %a.exit-off-canvas
+// data-options="disable_for_touch:true"
+/ #header
+/   .row
+/     .large-12.columns
+/       .text-center
+/         =render 'shared/logo'
+/ %form#search_hash_form
+/   .field
+/     %input{type:'text', name:'search'}
+/ #people
+/   .row
+/     .large-12.columns
+/       .text-center.grey-back
+/         %h1 People you've met
+/         %ul.large-block-grid-3
+/           - mentions.each do |mentioned|
+/             %li
+/               .info
+/                 = link_to "http://twitter.com/#{mentioned['screen_name']}" do
+/                   %img{src: mentioned['profile_image_normal'] }
+/                   %h4= mentioned['name']
+/                 %p.bio= mentioned['description']
 
 
-#tweets
-  .row
-    .large-12.columns
-      .text-center
-        %h1 Your tweets
-      #masonryContainer.tweet-grid
-        - tweets.each do |twit|
-          .tweet.panel.masonry-brick
-            %p= hashtag_sniffer twit[:text]
-            - if !twit[:media].blank?
-              %img{src:twit[:media][:media_url]}
-
-            - if twit[:coordinates].present?
-              .map
-                %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=400x400&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
-            .mentions
-              %ul.inline-list
-                - twit[:user_mentions].each do |name|
-                  / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
-                  %li
-                    = link_to "http://www.twitter.com/#{name}" do
-                      .user.avatar{title: name, class:'has-tip tip-top', data:{tooltip:''}}
-                        %img{src: profile_pic_url(name)}

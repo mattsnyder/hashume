@@ -1,0 +1,67 @@
+ul.orbit-slides-container {
+  min-height: 150px;
+  display: block;
+  overflow: hidden;
+  @media #{$small-only} { margin-bottom: 50px; }
+
+  h1 {margin-bottom: 20px;}
+}
+
+/* Foundation Orbit options */
+.orbit-step {
+  &.step-1 .orbit-next-custom:after {content: "Why yes, I did...";}
+  &.step-2 .orbit-next-custom:after {content: "Ok, then what?";}
+  &.step-3 .orbit-next-custom:after {content: "Login and try it out!";}
+  &.step-3 .orbit-next-custom {
+    background: $blue;
+    border-bottom: 4px solid $blue*0.8;
+
+    span:before {
+      @extend .fi-social-twitter;
+      color: white;
+      font-size: 1em;
+      margin: 0 10px 0 0;
+    }
+
+    &:hover {
+      background: $blue*1.2;
+    }
+  }
+}
+.orbit-container {
+  text-align: center;
+}
+.orbit-progress {
+  display: none;
+}
+.orbit-next-custom {
+  @extend .button;
+  @extend .round;
+  @include shadow;
+  background: $red;
+  border-bottom: 4px solid $red*0.8;
+  padding-left:60px;
+  padding-right:60px;
+  font-weight: 600 !important;
+  font-size: rem-calc(32);
+
+  &:hover {background: $red*1.5;}
+
+  &:after {
+    content: "Why yes, I did...";
+
+  }
+
+  span {
+    border: none;
+  }
+
+  @media #{$small-only} { font-size: rem-calc(18);}
+}
+
+.orbit-prev {
+  display: none;
+}
+.paused {
+  background: green;
+}
