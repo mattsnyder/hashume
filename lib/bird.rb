@@ -21,7 +21,7 @@ class Bird
                         id: t.id,
                         text: t.text,
                         hashtags: t.hashtags.map(&:text),
-                        user_mentions: t.user_mentions.map(&:name),
+                        user_mentions: t.user_mentions.map(&:screen_name),
                         created_at: t.created_at,
                         uri: t.uri.to_s,
                         coordinates: Maybe(t.geo.coordinates) {[]},

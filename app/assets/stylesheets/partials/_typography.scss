@@ -8,3 +8,17 @@ span.bold {
   font-weight: 600;
   color: $blue;
 }
+
+span.tag {
+  @extend .round;
+  @extend .label;
+  background: $red;
+  line-height: 20px;
+  font-size: .8em;
+  padding: 3px 15px;
+  margin: 0 5px 0 0;
+
+  &:before {
+    content:'#';
+  }
+}
