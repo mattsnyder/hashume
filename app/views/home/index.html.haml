@@ -18,6 +18,7 @@
   .row
     .large-8.medium-8.columns.large-centered.medium-centered
       .fake-tweet
+        / .like-this
         %span.count 30
         .row.collapse
           .small-3.columns
@@ -25,3 +26,4 @@
               %i.fi-social-twitter
           .small-9.columns
             %p @andreortiz @msnyder - It was great meeting you guys today! Let's catch up again over a coffee sometime. #sxsw
+  =render 'shared/twitter_button'

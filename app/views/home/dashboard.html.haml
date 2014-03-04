@@ -12,25 +12,25 @@
     %aside.left-off-canvas-menu
       %ul.off-canvas-list#hash
         %li
-          %label My #hashtags
+          %label #hashtags I've used
         .tags
           - 10.times do
             =link_to '#' do
               %span.tag= 'sxsw'
             =link_to '#' do
-              %span.tag.active= 'beer'
+              %span.tag= 'beer'
             =link_to '#' do
               %span.tag= 'gingerman'
             =link_to '#' do
               %span.tag= 'ftw'
             =link_to '#' do
-              %span.tag.active= 'atxdribbble'
+              %span.tag= 'atxdribbble'
             =link_to '#' do
               %span.tag= 'startupcrawl'
     %aside.right-off-canvas-menu
       %ul.off-canvas-list#people
         %li
-          %label People you've tweeted
+          %label People I've tweeted
         - mentions.each do |mentioned|
           %li
             = link_to "http://twitter.com/#{mentioned['screen_name']}" do
@@ -73,3 +73,6 @@
                                 .user.avatar{title: "@#{name}", class:'has-tip tip-top', data:{tooltip:'', options:'disable_for_touch:true'}}
                                   %img{src: profile_pic_url(name)}
     %a.exit-off-canvas
+
+/ Filter hashes
+%input{type:'hidden', class:'filter-hash'}

@@ -122,7 +122,7 @@ aside.right-off-canvas-menu {
     fill:white;
     max-width: 200px;
     max-height: 200px;
-    margin: -40px 0 50px 0;
+    margin: -60px 0 50px 0;
 
     @media #{$small-only} {
       max-width: 140px;
@@ -165,7 +165,7 @@ aside.right-off-canvas-menu {
             @include rotate(-45deg);
             position: absolute;
             bottom: 10px;
-            left: 23px;
+            left: 20px;
           }
         }
 
