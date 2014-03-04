@@ -1,0 +1,18 @@
+#about-us.reveal-modal.medium{"data-reveal" => ""}
+  .row.collapse
+    .large-6.columns
+      .info.text-center
+        = link_to 'http://helloandre.com' do
+          %img{src:'http://pbs.twimg.com/profile_images/437427780100562944/oBJ4yQUH_bigger.jpeg'}
+        %h2 Andre Ortiz
+        =render 'shared/socials', twitter:'andreortiz', dribbble:'andreortiz', github:'andreortiz82', web:'http://helloandre.com'
+        %p.lead Designer, Developer and all around application enthusiast.
+    .large-6.columns.light
+      .info.text-center
+        = link_to 'http://cranialpulse.com' do
+          %img{src:'http://pbs.twimg.com/profile_images/420229034924990464/c2pENHwu_bigger.jpeg'}
+        %h2 Matt Synder
+        =render 'shared/socials', twitter:'msnyder', github:'msnyder', web:'http://cranialpulse.com'
+        %p.lead Serial Bacon Eater | Codesmith | Enjoyer of Beverages | Occasional Stunt Double for the Hulk
+
+  %a.close-reveal-modal &times;

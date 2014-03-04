@@ -1,24 +1,13 @@
 body.index {
-
-  #header {
-    background: $dark fixed url(/assets/bgimage.jpg) center -300px;
+  background: $dark fixed url(/assets/bgimage.jpg) center bottom;
     background-size: cover;
-    border-bottom: 5px solid $red;
-    svg#hashu_logo_svg {
-      fill:white;
-      max-width: 200px;
-      max-height: 200px;
-      margin: 40px 0;
+  #header {
 
-      @media #{$small-only} {
-        max-width: 140px;
-        max-height: 140px;
-      }
-    }
+    border-bottom: 5px solid $red;
 
     h1 {
       font-weight: 200;
-      color: white;
+      color: #8a7b7b;
       font-size: rem-calc(52);
     }
 
@@ -48,72 +37,45 @@ body.index {
   }
 }
 section#marketing {
-  padding: 40px 0;
 
   h2 {
     font-weight: 600;
   }
+  .row.collapse.full { width: 100%; max-width: none;}
+  .white {background: white;}
+  .light {background: $blue;}
+  .light,
+  .white {
+    padding: 40px;
+    min-height: 315px;
+  }
 }
 
-
-
 .fake-tweet {
-  background: white;
-  position: relative;
-  margin-top: 40px;
-  @include shadow;
 
-  .like-this {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    z-index: -1;
-    width: 500px;
-    height: 500px;
-    background: url(/assets/like_this.svg) no-repeat;
-    background-size: cover;
-  }
-
-  .icon-container {
-    background: $blue;
-    padding: 30px;
-
-    @media #{$small-only} {
-      height: 200px;
-      overflow: hidden;
-      max-height: 195px;
-    }
-
-    @media #{$medium-only} {
-      height: 200px;
-      overflow: hidden;
-      max-height: 195px;
-    }
-
-    i.fi-social-twitter {
-      font-size: rem-calc(82);
-      color: white;
-      margin: 0;
-      @media #{$small-only} {
-        font-size: rem-calc(52);
-        line-height: 130px;
-        margin-left: -2px;
-      }
-    }
-  }
-  p {
-    @extend .lead;
-    text-align: left;
-    padding: 20px;
+  i.fi-social-twitter {
+    font-size: rem-calc(82);
+    color: white;
     margin: 0;
     @media #{$small-only} {
-      font-size: rem-calc(18);
+      font-size: rem-calc(52);
+
+    }
+    @media #{$medium-only} {
+      font-size: rem-calc(52);
     }
   }
+
+  h3 {
+    text-align: left;
+    margin: 0;
+    color: white;
+  }
+
   span.count {
     position: absolute;
     bottom: 20px;
     right: 20px;
-    color: $ccgrey;
+    color: white;
   }
 }

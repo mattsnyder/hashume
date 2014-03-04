@@ -1,0 +1,16 @@
+.socials
+  - if twitter
+    =link_to "https://twitter.com/intent/user?screen_name=#{twitter}", class:'button' do
+      %i.fi-social-twitter
+  - if defined? github
+    =link_to "https://github.com/#{github}", class:'button' do
+      %i.fi-social-github
+  - if defined? dribbble
+    =link_to "https://dribbble.com/#{dribbble}", class:'button' do
+      %i.fi-social-dribbble
+  - if defined? linkedin
+    =link_to "https://linkedin.com/#{linkedin}", class:'button' do
+      %i.fi-social-linkedin
+  - if defined? web
+    =link_to web, class:'button' do
+      %i.fi-laptop

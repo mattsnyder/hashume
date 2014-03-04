@@ -1,6 +1,33 @@
-footer {
+.about-hashu {
   padding: 40px 0;
-  p {
-    i.fi-heart {color: $red;}
+  svg#hashu_heart {
+    fill:$red;
+    background: rgba(black, 0.4);
+    padding: 20px;
+    @include border-radius(10px);
+  }
+}
+
+#about-us {
+  padding: 0;
+  .light {background: $light}
+  .info {
+    padding: 40px;
+    img { @include border-radius(100px); }
+  }
+
+  @media #{$small-only} {
+    left:0;
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .socials {
+    .button {
+      @include button(rem-calc(8), white, true, false, false, false);
+      border:1px solid $ccgrey;
+
+      i {font-size: rem-calc(24);}
+    }
   }
 }

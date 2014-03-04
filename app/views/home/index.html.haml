@@ -9,21 +9,20 @@
 
       =link_to 'Get started', '/auth/twitter', class:'button login'
 
-%section#marketing.text-center
-  .row
-    .large-12.columns
+%section#marketing
+  .row.collapse.full
+    .large-6.columns.white
       %h2 How it works
       %h3
         Did you just meet someone interesting at a social event? Mention them in a tweet, add a #hashtag and follow up with them later.
-  .row
-    .large-8.medium-8.columns.large-centered.medium-centered
+      =render 'shared/twitter_button'
+    .large-6.columns.light
       .fake-tweet
         / .like-this
-        %span.count 30
+        %span.count 7
         .row.collapse
-          .small-3.columns
-            .icon-container
-              %i.fi-social-twitter
-          .small-9.columns
-            %p @andreortiz @msnyder - It was great meeting you guys today! Let's catch up again over a coffee sometime. #sxsw
-  =render 'shared/twitter_button'
+          .large-3.columns.text-center
+            %i.fi-social-twitter
+          .large-9.columns
+            %h3 @andreortiz @msnyder - It was great meeting you both today! You dudes are awesome. Let's catch up again over a coffee sometime. #sxsw
+=render 'shared/heart'

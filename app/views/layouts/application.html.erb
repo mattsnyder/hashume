@@ -13,6 +13,7 @@
   <body class="<%=@body_class%>">
 
     <%= yield %>
+    <%= render "shared/about_modal" %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -63,7 +63,9 @@
 
                       - if twit[:coordinates].present?
                         .map
-                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=500x300&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                          / %img{src:"http://maps.googleapis.com/maps/api/streetview?size=500x300&location=#{twit[:coordinates].join(',')}&fov=50&heading=0&pitch=5&sensor=false"}
+
+                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=500x300&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
                       .mentions
                         %ul.inline-list
                           - twit[:user_mentions].each do |name|
@@ -73,6 +75,7 @@
                                 .user.avatar{title: "@#{name}", class:'has-tip tip-top', data:{tooltip:'', options:'disable_for_touch:true'}}
                                   %img{src: profile_pic_url(name)}
     %a.exit-off-canvas
+=render 'shared/heart'
 
 / Filter hashes
 %input{type:'hidden', class:'filter-hash'}

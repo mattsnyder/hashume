@@ -5,7 +5,19 @@ body {
 }
 
 .tweet-button {
-  padding: 20px 0;
+  padding: 10px 0;
+}
+
+svg#hashu_logo_svg {
+  fill:white;
+  max-width: 245px;
+  max-height: 315px;
+  margin: 40px 0;
+
+  @media #{$small-only} {
+    max-width: 205px;
+    max-height: 275px;
+  }
 }
 
 /* Foundation Tooltips */
