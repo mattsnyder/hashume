@@ -1,8 +1,9 @@
 body.index {
+
   #header {
     background: $dark fixed url(/assets/bgimage.jpg) center -300px;
     background-size: cover;
-
+    border-bottom: 5px solid $red;
     svg#hashu_logo_svg {
       fill:white;
       max-width: 200px;

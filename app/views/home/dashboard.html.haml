@@ -1,17 +1,32 @@
 .off-canvas-wrap
   .inner-wrap
     %nav.tab-bar
-      / %section.left-small.logo
-      /   =render 'shared/logo_type'
-      %section.tab-bar-section.middle
-        %form#search_hash_form
-          .field
-            .logo
-              =render 'shared/logo'
-            %input{type:'text', name:'search', placeholder:'Search for #hash'}
+      %section.left-small
+        %a.left-off-canvas-toggle.menu-icon
+          %span
+      %section.middle.tab-bar-section
+        / shhh
       %section.right-small
         %a.right-off-canvas-toggle.menu-icon
           %span
+    %aside.left-off-canvas-menu
+      %ul.off-canvas-list#hash
+        %li
+          %label My #hashtags
+        .tags
+          - 10.times do
+            =link_to '#' do
+              %span.tag= 'sxsw'
+            =link_to '#' do
+              %span.tag.active= 'beer'
+            =link_to '#' do
+              %span.tag= 'gingerman'
+            =link_to '#' do
+              %span.tag= 'ftw'
+            =link_to '#' do
+              %span.tag.active= 'atxdribbble'
+            =link_to '#' do
+              %span.tag= 'startupcrawl'
     %aside.right-off-canvas-menu
       %ul.off-canvas-list#people
         %li
@@ -28,18 +43,10 @@
                     %span="@#{mentioned['screen_name']}"
     %section.main-section
       #tweets
-        #myhash
-          .row
-            .large-3.columns
-              %h2
-                My
-                %span.bold #hashtags
-            .large-9.columns
-              - 20.times do
-                =link_to '#' do
-                  %span.tag= 'sxsw'
         .row
           .large-12.columns
+            .text-center
+              =render 'shared/logo'
             %ul.large-block-grid-3.tweet-grid#masonryContainer
               - tweets.each do |twit|
                 %li
@@ -56,7 +63,7 @@
 
                       - if twit[:coordinates].present?
                         .map
-                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=500x210&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=11&size=500x300&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
                       .mentions
                         %ul.inline-list
                           - twit[:user_mentions].each do |name|

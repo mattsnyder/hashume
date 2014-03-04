@@ -1,17 +1,14 @@
 body.dashboard {
-  background: $light;
+  background: $dark fixed url(/assets/bgimage.jpg) center bottom;
+  background-size: cover;
+
   .off-canvas-wrap {
     border-top: 5px solid $red;
-    nav.tab-bar {
-      background: $dark fixed url(/assets/bgimage.jpg) center bottom;
-      background-size: cover;
-    }
-    .tab-bar-section {
-      padding: 0;
-      &.middle {
-        left: 0;
-      }
-    }
+
+    &.move-left { }
+    &.move-right { }
+    nav.tab-bar { }
+    .tab-bar-section { }
   }
 
   section.right-small {
@@ -22,18 +19,68 @@ body.dashboard {
         &:before {
           @extend .fi-results-demographics;
           color:white;
+          font-size: 3.8em;
+          position: relative;
+          top: 10px;
+          left:-60px;
+        }
+      }
+    }
+  }
+  section.left-small {
+    a.left-off-canvas-toggle.menu-icon {
+      span {
+        @include box-shadow(none);
+
+        &:before {
+          @extend .fi-list;
+          color:white;
           font-size: 3em;
           position: relative;
           top: 17px;
-          right:50px;
+          left:-60px;
         }
       }
     }
   }
 }
 
+aside.left-off-canvas-menu {
+  background:$dark;
+  height: 100%;
+
+  ul.off-canvas-list#hash {
+    li {
+      label {
+        padding: 10px;
+        color: rgba(white, 0.5);
+        text-align: center;
+        background: rgba(black, 0.3);
+        font-size: rem-calc(22);
+        font-weight: 200;
+        text-transform: none;
+      }
+    }
+
+    .tags {
+      padding: 5px;
+      span.tag {
+        margin: 3px 3px 0 0;
+        display: inline-block;
+        background: $black;
+        @include transition(background 0.5s);
+        &.active, &:hover {
+          background:$red;
+        }
+      }
+    }
+
+  }
+}
+
 aside.right-off-canvas-menu {
   background:$dark;
+  height: 100%;
 
   ul.off-canvas-list#people {
     li {
@@ -70,57 +117,19 @@ aside.right-off-canvas-menu {
   }
 }
 
-form#search_hash_form {
-  margin: 0;
-  position: relative;
-  top:12px;
-  left:12px;
-  width: 100%;
-
-  .field {
-    padding-left: 80px;
-    .logo {
-      position: relative;
-      svg#hashu_logo_svg {
-        height: 50px;
-        width: 50px;
-        fill:white;
-        position: absolute;
-        top: 10px;
-        left: -70px;
-      }
-    }
-    input[type='text'] {
-      font-size: rem-calc(32);
-      font-weight: 200;
-      height: 70px;
-      color: white;
-      @extend .radius;
-      background: rgba(black, 0.6);
-      border: none;
-      @media #{$small-only} { font-size: rem-calc(24); }
-    }
-    /*&:before {
-      @extend .fi-magnifying-glass;
-      color:rgba(white, 0.3);
-      font-size: 2.5em;
-
-    }*/
-  }
-}
-
 #tweets {
-  background: $light;
-  padding-bottom: 50px;
+  svg#hashu_logo_svg {
+    fill:white;
+    max-width: 200px;
+    max-height: 200px;
+    margin: -40px 0 50px 0;
 
-  #myhash {
-    margin: 30px 0;
-    span.tag {margin-bottom: 5px;}
-    h2 {
-      margin: 0;
-      span.bold {color: $red}
+    @media #{$small-only} {
+      max-width: 140px;
+      max-height: 140px;
     }
   }
+
   /* Masonry
   http://patterntap.com/code/stacking-columns-layout-masonry
   */
@@ -138,7 +147,7 @@ form#search_hash_form {
         overflow: hidden;
         background: white;
         position: relative;
-        @include shadow($ccgrey, 0.3);
+        @include shadow;
         @media #{$small-only} {margin: 0 0 20px 0;}
 
         span.reply {
@@ -198,7 +207,7 @@ form#search_hash_form {
             padding: 5px;
             margin: 0;
             li {
-              margin: 10px 10px 0 0;
+              margin: 3px;
               img {
                 margin: 0;
                 @include border-radius(100px);
@@ -216,16 +225,12 @@ form#search_hash_form {
           border-top:3px solid $map_green*0.8;
           background: $map_green;
           text-align: center;
-          height: 100px;
+          min-height: 145px;
           overflow: hidden;
 
-          img {
+          /*img {
             max-height: 100px;
-          }
-        }
-
-        &:hover {
-          @include shadow($blue, 0.3);
+          }*/
         }
       }
     }

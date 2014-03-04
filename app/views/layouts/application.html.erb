@@ -2,8 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title><%= content_for?(:title) ? yield(:title) : "#hashu - Remember the people you tweet." %></title>
 
     <%= stylesheet_link_tag    "application" %>
@@ -14,7 +13,6 @@
   <body class="<%=@body_class%>">
 
     <%= yield %>
-    <%= render 'shared/footer' %>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
