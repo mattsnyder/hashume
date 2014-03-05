@@ -19,10 +19,13 @@
     .large-6.columns.light
       .fake-tweet
         / .like-this
-        %span.count 7
+        %span.count 8
         .row.collapse
           .large-3.columns.text-center
             %i.fi-social-twitter
           .large-9.columns
-            %h3 @andreortiz @msnyder - It was great meeting you both today! You dudes are awesome. Let's catch up again over a coffee sometime. #sxsw
+            %h3 @andreortiz @msnyder - You both did a great job on #hashu. Can't wait to tell all my friends about how awesome you guys are. #socool
+
+            =link_to 'https://twitter.com/share?text=@andreortiz @msnyder - You both did a great job on %23hashu. Can\'t wait to tell all my friends about how awesome you guys are. %23socool', class:'tryit button' do
+              Try it with a tweet
 =render 'shared/heart'
