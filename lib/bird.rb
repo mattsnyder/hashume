@@ -13,7 +13,7 @@ class Bird
   def choke_on(hashtag)
     hashu = Hashu.new @user.screen_name, hashtag
     return if updated_recently?(hashu)
-    results = petey.search "##{hashtag} from:#{@user.screen_name}"
+    results = petey.user_timeline @user.screen_name
     results.each do |t|
       # Store the tweet
       tweet = Tweet.new(
@@ -21,7 +21,7 @@ class Bird
                         id: t.id,
                         text: t.text,
                         hashtags: t.hashtags.map(&:text),
-                        user_mentions: t.user_mentions.map(&:screen_name),
+                        user_mentions: t.user_mentions.map{|m| { name: m.name, screen_name: m.screen_name } },
                         created_at: t.created_at,
                         uri: t.uri.to_s,
                         coordinates: Maybe(t.geo.coordinates) {[]},
@@ -32,6 +32,8 @@ class Bird
 
       # Store tweets by tweeter and hash (hashu)
       TweetByHashuRepository.save TweetByHashu.new(hashu: hashu.to_s, tweet: TweetRepository.serialize(tweet))
+
+
       t.user_mentions.each do |u|
         mentioned = petey.user(u.id)
         tweeter = Tweeter.new(

@@ -9,6 +9,7 @@ body.dashboard {
     &.move-right { }
     nav.tab-bar { }
     .tab-bar-section { }
+    /*.inner-wrap {height: 100vh}*/
   }
 
   section.right-small {
@@ -130,6 +131,7 @@ aside.right-off-canvas-menu {
     .masonry-brick {
       width: 25%;
       margin: 0 0 0 0;
+      padding: 0;
       @media #{$small-only} {width: 100%;}
 
       .tweet.panel {

@@ -21,6 +21,15 @@ span.tag {
   &:before {
     content:'#';
   }
+
+  &.all {
+    width: 100%;
+    display: block;
+    margin: 0 0 10px 0 !important;
+    font-size: 1em;
+    @include border-radius(0);
+    &:before {content:'';}
+  }
 }
 
 .red {color: $red;}

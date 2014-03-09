@@ -14,19 +14,12 @@
         %li
           %label #hashtags I've used
         .tags
-          - 10.times do
+          =link_to '#' do
+            %span.tag.all.active{"data-filter-value"=>"*"} Show all
+          - hashtags.each do |hash|
             =link_to '#' do
-              %span.tag= 'sxsw'
-            =link_to '#' do
-              %span.tag= 'beer'
-            =link_to '#' do
-              %span.tag= 'gingerman'
-            =link_to '#' do
-              %span.tag= 'ftw'
-            =link_to '#' do
-              %span.tag= 'atxdribbble'
-            =link_to '#' do
-              %span.tag= 'startupcrawl'
+              %span.tag{"data-filter-value"=>".#{hash}"}= hash
+
     %aside.right-off-canvas-menu
       %ul.off-canvas-list#people
         %li
@@ -49,29 +42,33 @@
               =render 'shared/logo'
             %ul.large-block-grid-3.tweet-grid#masonryContainer
               - tweets.each do |twit|
-                %li
-                  .masonry-brick
-                    .tweet.panel
-                      =link_to "https://twitter.com/intent/tweet?in_reply_to=#{twit[:id]}" do
-                        %span.reply
-                          %i.ei.reply
-                      %p= hashtag_sniffer twit[:text]
+                / =twit.hashtags.inspect
+                %li{class:"masonry-brick twit #{twit['hashtags'].join(' ')}"}
+                  .tweet.panel
+                    =link_to "https://twitter.com/intent/tweet?in_reply_to=#{twit[:id]}" do
+                      %span.reply
+                        %i.ei.reply
+                    %p= hashtag_sniffer twit[:text]
 
-                      - if !twit[:media].blank?
-                        .media
-                          %img{src:twit[:media][:media_url]}
+                    - if !twit[:media].blank?
+                      .media
+                        %img{src:twit[:media][:media_url]}
 
-                      - if twit[:coordinates].present?
-                        .map
-                          %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=500x300&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                    - if twit[:coordinates].present?
+                      .map
+                        %img{src:"http://maps.googleapis.com/maps/api/staticmap?zoom=16&size=500x300&maptype=roadmap&sensor=false&markers=color:red%7Ccolor:red%7Clabel:C%7C#{twit[:coordinates].join(',')}"}
+                    - unless twit[:user_mentions].blank?
                       .mentions
                         %ul.inline-list
-                          - twit[:user_mentions].each do |name|
+                          - twit[:user_mentions].each do |user|
                             / We need to pull back the Full name and the screen name here: Matt Snyder AND msnyder
+                            / =user.inspect
                             %li
-                              = link_to "http://www.twitter.com/#{name}" do
-                                .user.avatar{title: "@#{name}", class:'has-tip tip-top', data:{tooltip:'', options:'disable_for_touch:true'}}
-                                  %img{src: profile_pic_url(name)}
+                              = link_to "http://www.twitter.com/#{user['screen_name']}" do
+                                .user.avatar{title: "#{user['name']}", class:'has-tip tip-top', data:{tooltip:'', options:'disable_for_touch:true'}}
+                                  //%img{src: "https://api.twitter.com/1/users/profile_image?screen_name=#{user['screen_name']}&size=bigger"}
+
+                                  %img{src: profile_pic_url(user['name'])}
       =render 'shared/heart'
     %a.exit-off-canvas
 

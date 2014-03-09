@@ -15,34 +15,53 @@
 //= require foundation
 //= require thirdparty/masonry.pkgd.min
 
-$(window).load(function(){
-  $('#masonryContainer').masonry({
-    itemSelector: '.masonry-brick',
-
-    isAnimated: true,
-  });
-});
-
 $(function(){
   // Load foundation
   $(document).foundation();
+
+  var $container = $('#masonryContainer');
+
+  $container.isotope({
+    // options
+    itemSelector: '.masonry-brick',
+    layoutMode: 'masonry'
+  });
 
   // Fix broken avatar image
   $('img').error(function(){
     $(this).attr('src', '/assets/missing.png');
   });
 
-  // Toggle active class about build filter
   var filter = [];
-  $( '.left-off-canvas-menu span.tag' ).click(function() {
-    if($(this).hasClass('active')) {
-      $(this).removeClass('active');
-      filter.splice( $.inArray($(this).text(), filter), 1);
-    } else {
-      $(this).addClass('active');
-      filter.push($(this).text());
+  var filterFns = {
+    // show if number is greater than 50
+    numberGreaterThan50: function() {
+      var number = $(this).find('.number').text();
+      return parseInt( number, 10 ) > 50;
+    },
+    // show if name ends with -ium
+    ium: function() {
+      var name = $(this).find('.name').text();
+      return name.match( /ium$/ );
     }
-    $('input.filter-hash').val(filter);
-    console.log('Filter the tweets by these #hashtags:', filter);
+  };
+
+  $( 'span.tag' ).click(function() {
+    var filterValue = $(this).attr('data-filter-value');
+
+    filterValue = filterFns[ filterValue ] || filterValue;
+    $container.isotope({ filter: filterValue });
   });
+
+  $('.tags').each( function( i, tag ) {
+    var $tag = $( tag );
+    $tag.on( 'click', 'span.tag', function() {
+      $tag.find('.active').removeClass('active');
+      $( this ).addClass('active');
+    });
+  });
+
+  setTimeout(function() {
+    $container.isotope('layout');
+  }, 100);
 });
